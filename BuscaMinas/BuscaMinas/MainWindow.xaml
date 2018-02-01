@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:BuscaMinas"
         mc:Ignorable="d"
         Name="VentanaPrincipal"
-        Title="Busca Minas" Height="350" Width="525">   
-    <Grid Name="gridTablero"/>
+        Title="Busca Minas" Height="350" Width="525">
+    <Grid Name="GridMaster">
+
+        <Grid Name="gridTablero" Margin="0,26,0,0"/>
+        <Menu HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="509">
+            <MenuItem Header="Archivo">
+                <MenuItem Header="Salir"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
 </Window>
