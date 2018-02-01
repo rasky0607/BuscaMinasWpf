@@ -73,3 +73,17 @@ C:\Users\Pablo\Documents\Documentos\Proyectos\BuscaMinas\BuscaMinas\obj\Debug\Bu
 C:\Users\Pablo\Documents\Documentos\Proyectos\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.CoreCompileInputs.cache
 C:\Users\Pablo\Documents\Documentos\Proyectos\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.exe
 C:\Users\Pablo\Documents\Documentos\Proyectos\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.pdb
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.exe.config
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csprojResolveAssemblyReference.cache
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\MainWindow.g.cs
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\App.g.cs
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas_MarkupCompile.cache
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas_MarkupCompile.lref
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.exe
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.pdb
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\MainWindow.baml
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.g.resources
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.Properties.Resources.resources
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.GenerateResource.Cache
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.exe
+C:\repositoriosGit\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.pdb

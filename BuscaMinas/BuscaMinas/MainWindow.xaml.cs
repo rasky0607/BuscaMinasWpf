@@ -20,8 +20,8 @@ namespace BuscaMinas
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-        Button[,] misbotones = new Button[20,20];//20 filas 20 columnas por cada fila y columna un boton
+        const int NUMERODEFILASYCOLUMNAS = 5;
+        Button[,] misbotones = new Button[NUMERODEFILASYCOLUMNAS, NUMERODEFILASYCOLUMNAS];//20 filas 20 columnas por cada fila y columna un boton
         int[] posicionButtonActual = new int[2];//Poscion del botton actualmente pulsado para comprobar si alrededor ahi minas.
         public MainWindow()
         {
@@ -37,7 +37,7 @@ namespace BuscaMinas
             RowDefinition mifila;
             ColumnDefinition micolum;
 
-            for (int i = 0; i < 20; i++)//Filas
+            for (int i = 0; i < NUMERODEFILASYCOLUMNAS; i++)//Filas
             {
                 mifila = new RowDefinition();
                 gridTablero.RowDefinitions.Add(mifila);
@@ -101,45 +101,42 @@ namespace BuscaMinas
             #region si faltan botones con la combinacion de ambas( arriba izquierda, abajo izquierda ..etc..)
             if (posX == 0 && posY == 0)//Parte superior izquierda
             {
-
-                if (misbotones[posX + 1, posY].Tag is 0)
+                if ((int)misbotones[posX + 1, posY].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX, posY + 1].Tag is 0)
+                if ((int)misbotones[posX, posY + 1].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX + 1, posY + 1].Tag is 0)
+                if ((int)misbotones[posX + 1, posY + 1].Tag == 0)
                     contadorMinasCercanas++;
             }
             if (posX == 0 && posY == gridTablero.RowDefinitions.Count - 1)//Parte  inferior izquierda
             {
-
-
-                if (misbotones[posX, posY - 1].Tag is 0)
+                if ((int)misbotones[posX, posY - 1].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX + 1, posY - 1].Tag is 0)
+                if ((int)misbotones[posX + 1, posY - 1].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX + 1, posY].Tag is 0)
+                if ((int)misbotones[posX + 1, posY].Tag == 0)
                     contadorMinasCercanas++;
 
 
             }
             if (posX == gridTablero.ColumnDefinitions.Count - 1 && posY == 0)//Parte  superior derecha
             {
-                if (misbotones[posX - 1, posY].Tag is 0)
+                if ((int)misbotones[posX - 1, posY].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX - 1, posY + 1].Tag is 0)
+                if ((int)misbotones[posX - 1, posY + 1].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX, posY + 1].Tag is 0)
+                if ((int)misbotones[posX, posY + 1].Tag == 0)
                     contadorMinasCercanas++;
 
             }
             if (posX == gridTablero.ColumnDefinitions.Count - 1 && posY == gridTablero.RowDefinitions.Count - 1)//Parte  inferior derecha
             {
 
-                if (misbotones[posX - 1, posY - 1].Tag is 0)
+                if ((int)misbotones[posX - 1, posY - 1].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX, posY - 1].Tag is 0)
+                if ((int)misbotones[posX, posY - 1].Tag == 0)
                     contadorMinasCercanas++;
-                if (misbotones[posX - 1, posY].Tag is 0)
+                if ((int)misbotones[posX - 1, posY].Tag == 0)
                     contadorMinasCercanas++;
             }
 
@@ -147,67 +144,67 @@ namespace BuscaMinas
             else
             {
                 #region si faltan botones por la izqueirda solo
-                if (posX == 0 && posY != 0)
+                if (posX == 0 && posY != 0 && posY != gridTablero.RowDefinitions.Count-1)
                 {
-                    if (misbotones[posX, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY + 1].Tag is 0)//REVISAR ***
+                    if ((int)misbotones[posX, posY + 1].Tag == 0)//REVISAR ***
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
                 }
                 #endregion
                 #region si faltan botones por la derecha solo
-                if (posX == gridTablero.ColumnDefinitions.Count - 1)//REVISAR****
+                if (posX == gridTablero.ColumnDefinitions.Count - 1 && posY != gridTablero.RowDefinitions.Count-1 && posY != 0)//REVISAR****
                 {
-                    if (misbotones[posX - 1, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY - 1].Tag == 0)//REVISAR***
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX - 1, posY].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX - 1, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
 
                 }
                 #endregion
 
                 #region si faltan botones por arriba solo
-                if (posX != 0&&posY == 0)
+                if (posX != 0 && posY == 0 && posX !=gridTablero.ColumnDefinitions.Count-1)
                 {
-                    if (misbotones[posX - 1, posY].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY].Tag == 0)
                         contadorMinasCercanas++;
 
-                    if (misbotones[posX - 1, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
                 }
                 #endregion
                 #region si faltan botones por la abajo solo
-                if (posY == gridTablero.RowDefinitions.Count - 1)
+                if (posX != 0 && posX != gridTablero.ColumnDefinitions.Count - 1 && posY == gridTablero.RowDefinitions.Count - 1)
                 {
 
-                    if (misbotones[posX - 1, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
 
-                    if (misbotones[posX - 1, posY].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY].Tag == 0)
                         contadorMinasCercanas++;
                 }
                 #endregion
@@ -215,28 +212,30 @@ namespace BuscaMinas
 
 
                 #region Si hay botones 8 alrededor
-                else if (posX != 0 && posY != 0)
+                else if (posX != 0 && posY != 0 && posY != gridTablero.RowDefinitions.Count - 1 && posX != gridTablero.ColumnDefinitions.Count-1)
                 {
 
-                    if (misbotones[posX - 1, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY - 1].Tag is 0)
+                    if ((int)misbotones[posX, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY - 1].Tag is 0)//REVISAR***
-                        contadorMinasCercanas++;
-
-                    if (misbotones[posX - 1, posY].Tag is 0)
-                        contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY - 1].Tag == 0)
                         contadorMinasCercanas++;
 
-                    if (misbotones[posX - 1, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX - 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX, posY + 1].Tag is 0)
+                    if ((int)misbotones[posX + 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if (misbotones[posX + 1, posY + 1].Tag is 0)
+
+                    if ((int)misbotones[posX - 1, posY + 1].Tag == 0)
+                        contadorMinasCercanas++;
+                    if ((int)misbotones[posX, posY + 1].Tag == 0)
+                        contadorMinasCercanas++;
+                    if ((int)misbotones[posX + 1, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
                 }
+                
+                
                 #endregion
             }
 
@@ -248,7 +247,7 @@ namespace BuscaMinas
 
             SolidColorBrush micolor = new SolidColorBrush(Colors.Red);
             SolidColorBrush micolor2 = new SolidColorBrush(Colors.Green);       
-            if (misbotones[posX, posY].Tag is 0)
+            if ((int)misbotones[posX, posY].Tag == 0)
             {
                 MessageBox.Show("hay mina!");
                 misbotones[posX, posY].Background = micolor;
