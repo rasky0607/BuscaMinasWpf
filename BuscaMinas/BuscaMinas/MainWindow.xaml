@@ -9,11 +9,16 @@
         Title="Busca Minas" Height="350" Width="525">
     <Grid Name="GridMaster">
 
-        <Grid Name="gridTablero" Margin="0,26,0,0"/>
+        <Grid Name="gridTablero" Margin="0,54,0,0"/>
         <Menu HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="509">
             <MenuItem Header="Archivo">
                 <MenuItem Header="Salir"/>
             </MenuItem>
         </Menu>
+        <Label Content="Botones sin minas:" HorizontalAlignment="Left" Margin="78,26,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbNumerodeBotonesSinMinas" Content="" HorizontalAlignment="Left" Margin="191,28,0,0" VerticalAlignment="Top"/>
+        <Label Content="Botones con minas:" HorizontalAlignment="Left" Margin="295,28,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbNumerodeBotonesConMinas" Content="" HorizontalAlignment="Left" Margin="408,30,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

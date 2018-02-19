@@ -19,16 +19,22 @@ namespace BuscaMinas
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {     
         const int NUMERODEFILASYCOLUMNAS = 5;
-        Button[,] misbotones = new Button[NUMERODEFILASYCOLUMNAS, NUMERODEFILASYCOLUMNAS];//20 filas 20 columnas por cada fila y columna un boton
+        Button[,] misbotones = new Button[NUMERODEFILASYCOLUMNAS, NUMERODEFILASYCOLUMNAS];//20 filas 20 columnas por cada fila y columna un boton       
         int[] posicionButtonActual = new int[2];//Poscion del botton actualmente pulsado para comprobar si alrededor ahi minas.
+        List<Button> botonesSinMinas = new List<Button>();
+        List<Button> botonesConMinas = new List<Button>();
+        List<Button> botonesPulsados = new List<Button>();
+        int contadorBotonesSinMinas = 0;
+        int contadorBotonesConMinas = 0;
+        static bool sepulsoElBoton;
         public MainWindow()
         {
             InitializeComponent();
             CreaGrid();          
-            LLenaBotones();         
-           
+            LLenaBotones();
+          
            
         }
 
@@ -43,7 +49,7 @@ namespace BuscaMinas
                 gridTablero.RowDefinitions.Add(mifila);
                 micolum = new ColumnDefinition();
                 gridTablero.ColumnDefinitions.Add(micolum);
-                //como guardar  las posicines de el grid creado
+               
             }
 
         }
@@ -55,7 +61,7 @@ namespace BuscaMinas
         /// <param name="array"></param>
         private void LLenaBotones()
         {
-           
+            int contadorNombreBotones =1;
            int nColum = gridTablero.ColumnDefinitions.Count;
             int nFilas = gridTablero.RowDefinitions.Count;
             Button mibutton;
@@ -70,6 +76,12 @@ namespace BuscaMinas
                     mibutton.Background = micolor;
                     //añade un valor aleatorio entre 0 y 1 al tag del boton definiendo si hay mina o no(1-> no mina 0->si mina)
                     mibutton.Tag = rnd.Next(0, 2);
+                    mibutton.Name = "boton" + contadorNombreBotones;
+                    
+                    if (mibutton.Tag is 0)
+                        botonesConMinas.Add(mibutton);//Botones que si contienen minas
+                    else
+                        botonesSinMinas.Add(mibutton);//Botones que no contienen minas
                     //Posiciones en el grid
                     Grid.SetRow(mibutton, i);
                     Grid.SetColumn(mibutton, j);
@@ -79,9 +91,13 @@ namespace BuscaMinas
                     mibutton.Click += new RoutedEventHandler(EventoBoton);
                     //Añade el boton al panel
                     gridTablero.Children.Add(mibutton);
-                    
+                    contadorNombreBotones++;
                 }
             }
+            contadorBotonesSinMinas = botonesSinMinas.Count-1;
+            contadorBotonesConMinas = botonesConMinas.Count - 1;
+            lbNumerodeBotonesSinMinas.Content = contadorBotonesSinMinas;
+            lbNumerodeBotonesConMinas.Content = contadorBotonesConMinas;
             
         }
 
@@ -89,8 +105,9 @@ namespace BuscaMinas
         /// Comprueba en las celdas colindantes si hay alguna en la que encuentre minas
         /// </Comprueba si hay minas>
         /// <returns>Devuelve la posicion del elemento clicado</returns>
-        public bool BuscaMinasCercanas(int posX, int posY)// <----RVISAR ESQUINAS!
+        public bool BuscaMinasCercanas(int posX, int posY)
         {
+           
             int contadorMinasCercanas = 0;
             //1 -No mina
             //0 Si mina
@@ -152,7 +169,7 @@ namespace BuscaMinas
                         contadorMinasCercanas++;
                     if ((int)misbotones[posX + 1, posY].Tag == 0)
                         contadorMinasCercanas++;
-                    if ((int)misbotones[posX, posY + 1].Tag == 0)//REVISAR ***
+                    if ((int)misbotones[posX, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
                     if ((int)misbotones[posX + 1, posY + 1].Tag == 0)
                         contadorMinasCercanas++;
@@ -210,7 +227,6 @@ namespace BuscaMinas
                 #endregion
 
 
-
                 #region Si hay botones 8 alrededor
                 else if (posX != 0 && posY != 0 && posY != gridTablero.RowDefinitions.Count - 1 && posX != gridTablero.ColumnDefinitions.Count-1)
                 {
@@ -237,6 +253,8 @@ namespace BuscaMinas
                 
                 
                 #endregion
+
+
             }
 
             misbotones[posX, posY].Content = contadorMinasCercanas;
@@ -249,14 +267,16 @@ namespace BuscaMinas
             SolidColorBrush micolor2 = new SolidColorBrush(Colors.Green);       
             if ((int)misbotones[posX, posY].Tag == 0)
             {
-                MessageBox.Show("hay mina!");
+                MessageBox.Show("hay mina!");            
                 misbotones[posX, posY].Background = micolor;
+                lbNumerodeBotonesConMinas.Content = --contadorBotonesConMinas;
                 return true;
             }
             else
             {
-                MessageBox.Show("NO hay mina");
-                misbotones[posX, posY].Background = micolor2;
+                MessageBox.Show("NO hay mina");              
+                misbotones[posX, posY].Background = micolor2;             
+                lbNumerodeBotonesSinMinas.Content = --contadorBotonesSinMinas;//Revisar cuando llega a 0 minas " el cual se pone en negativo" 
                 return false;
             }
             #endregion
@@ -267,21 +287,71 @@ namespace BuscaMinas
 
         private void EventoBoton(object sender, RoutedEventArgs e)
         {
-            
 
+          
             for (int i = 0; i < misbotones.GetLength(0); i++)
             {
                 for (int j = 0; j < misbotones.GetLength(1); j++)
-                {
+                {                  
                     //Si el boton pulsado es el mismo que uno de los del array de botones guardo la posicion en la que se encuentra en dicho array
                     if (misbotones[i, j].Equals(sender))
                     {
-                        BuscaMinasCercanas(i, j);
-                       //Si es asi colocamos el boton  en rojo, lo desactivamos y añadimos una imagen de una mina
-                      
+
+                        for (int k = 0; k < botonesPulsados.Count; k++)//PRUEBA
+                        {
+                            if (botonesPulsados[k].Name == misbotones[i, j].Name)//POR AQUI!
+                            {
+                                MessageBox.Show("Ya me pulsaste!");
+                                sepulsoElBoton = true;
+                            }
+                            else
+                                sepulsoElBoton = false;
+                        }
+
+                        if (!sepulsoElBoton)
+                        {
+                            botonesPulsados.Add(misbotones[i, j]);//añado el boton pulsado a una lista de descartados , para que en caso de que se pulse de nuevo se ignore , sin deshabilitarlo                   
+                            BuscaMinasCercanas(i, j);
+                        }
+                        //misbotones[i, j].IsEnabled = false;
+                        //Si es asi colocamos el boton  en rojo, lo desactivamos y añadimos una imagen de una mina
+
                     }
                 }
-            }        
+            }
+            if (contadorBotonesSinMinas == 0)
+            {
+                MessageBoxResult respuesta = MessageBox.Show("¿Quieres comenzar una nueva partida?", "Felicidades has ganado!", MessageBoxButton.YesNo);
+
+                switch (respuesta)
+                {
+                    case MessageBoxResult.Yes:
+                        CreaGrid();
+                        LLenaBotones();
+                        break;
+                    case MessageBoxResult.No:
+                        Close();
+                        break;
+                }
+
+            }
+
+            if (contadorBotonesConMinas == 0)
+            {
+                MessageBoxResult respuesta = MessageBox.Show("¿Quieres intentarlo de nuevo?", "Oh, losiento has perdido!", MessageBoxButton.YesNo);
+                switch (respuesta)
+                {
+                    case MessageBoxResult.Yes:
+                        CreaGrid();
+                        LLenaBotones();
+                        break;
+                    case MessageBoxResult.No:
+                        Close();
+                        break;
+                }
+
+
+            }
         }
       
 
