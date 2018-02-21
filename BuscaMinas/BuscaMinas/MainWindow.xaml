@@ -12,7 +12,7 @@
         <Grid Name="gridTablero" Margin="0,54,0,0"/>
         <Menu HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="509">
             <MenuItem Header="Archivo">
-                <MenuItem Header="Salir"/>
+                <MenuItem Header="Salir" Click="SalirPrograma"/>
             </MenuItem>
         </Menu>
         <Label Content="Botones sin minas:" HorizontalAlignment="Left" Margin="78,26,0,0" VerticalAlignment="Top"/>

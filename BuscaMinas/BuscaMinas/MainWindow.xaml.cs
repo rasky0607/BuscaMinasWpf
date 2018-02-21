@@ -21,17 +21,17 @@ namespace BuscaMinas
     public partial class MainWindow : Window
     {     
         const int NUMERODEFILASYCOLUMNAS = 5;
-        Button[,] misbotones = new Button[NUMERODEFILASYCOLUMNAS, NUMERODEFILASYCOLUMNAS];//20 filas 20 columnas por cada fila y columna un boton       
+        Button[,] misbotones;//20 filas 20 columnas por cada fila y columna un boton       
         int[] posicionButtonActual = new int[2];//Poscion del botton actualmente pulsado para comprobar si alrededor ahi minas.
         List<Button> botonesSinMinas = new List<Button>();
         List<Button> botonesConMinas = new List<Button>();
         List<Button> botonesPulsados = new List<Button>();
         int contadorBotonesSinMinas = 0;
-        int contadorBotonesConMinas = 0;
-        static bool sepulsoElBoton;
+        int contadorBotonesConMinas = 0;     
         public MainWindow()
         {
             InitializeComponent();
+           
             CreaGrid();          
             LLenaBotones();
           
@@ -43,9 +43,14 @@ namespace BuscaMinas
             RowDefinition mifila;
             ColumnDefinition micolum;
 
+            //Limpia las columnas y filas del Grid para el reinicio de la partida
+            gridTablero.RowDefinitions.Clear();
+            gridTablero.ColumnDefinitions.Clear();
+            //------------------------------------//
+
             for (int i = 0; i < NUMERODEFILASYCOLUMNAS; i++)//Filas
             {
-                mifila = new RowDefinition();
+                mifila = new RowDefinition();              
                 gridTablero.RowDefinitions.Add(mifila);
                 micolum = new ColumnDefinition();
                 gridTablero.ColumnDefinitions.Add(micolum);
@@ -61,8 +66,9 @@ namespace BuscaMinas
         /// <param name="array"></param>
         private void LLenaBotones()
         {
+            misbotones = new Button[NUMERODEFILASYCOLUMNAS, NUMERODEFILASYCOLUMNAS];//20 filas 20 columnas por cada fila y columna un boton   
             int contadorNombreBotones =1;
-           int nColum = gridTablero.ColumnDefinitions.Count;
+            int nColum = gridTablero.ColumnDefinitions.Count;
             int nFilas = gridTablero.RowDefinitions.Count;
             Button mibutton;
             SolidColorBrush micolor;
@@ -285,36 +291,31 @@ namespace BuscaMinas
 
         }
 
+
         private void EventoBoton(object sender, RoutedEventArgs e)
         {
 
-          
+
             for (int i = 0; i < misbotones.GetLength(0); i++)
             {
                 for (int j = 0; j < misbotones.GetLength(1); j++)
-                {                  
+                {
                     //Si el boton pulsado es el mismo que uno de los del array de botones guardo la posicion en la que se encuentra en dicho array
                     if (misbotones[i, j].Equals(sender))
                     {
-
-                        for (int k = 0; k < botonesPulsados.Count; k++)//PRUEBA
+                        bool sisepulso = true;
+                        for (int k = 0; k < botonesPulsados.Count; k++)//Recorre la lista de botones ya pulsados
                         {
-                            if (botonesPulsados[k].Name == misbotones[i, j].Name)//POR AQUI!
-                            {
-                                MessageBox.Show("Ya me pulsaste!");
-                                sepulsoElBoton = true;
-                            }
-                            else
-                                sepulsoElBoton = false;
-                        }
+                            if (botonesPulsados[k] == e.OriginalSource)//si el boton pulsado ,es uno que ya se pulso antes
+                                sisepulso = false;
 
-                        if (!sepulsoElBoton)
+                        }
+                        if (sisepulso)
                         {
                             botonesPulsados.Add(misbotones[i, j]);//añado el boton pulsado a una lista de descartados , para que en caso de que se pulse de nuevo se ignore , sin deshabilitarlo                   
                             BuscaMinasCercanas(i, j);
                         }
-                        //misbotones[i, j].IsEnabled = false;
-                        //Si es asi colocamos el boton  en rojo, lo desactivamos y añadimos una imagen de una mina
+
 
                     }
                 }
@@ -326,7 +327,7 @@ namespace BuscaMinas
                 switch (respuesta)
                 {
                     case MessageBoxResult.Yes:
-                        CreaGrid();
+                        CreaGrid();                      
                         LLenaBotones();
                         break;
                     case MessageBoxResult.No:
@@ -342,7 +343,7 @@ namespace BuscaMinas
                 switch (respuesta)
                 {
                     case MessageBoxResult.Yes:
-                        CreaGrid();
+                        CreaGrid();                      
                         LLenaBotones();
                         break;
                     case MessageBoxResult.No:
@@ -353,8 +354,12 @@ namespace BuscaMinas
 
             }
         }
-      
 
-        
+        private void SalirPrograma(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+
     }
 }
