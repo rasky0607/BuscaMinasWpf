@@ -13,6 +13,11 @@
         <Menu HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="509">
             <MenuItem Header="Archivo">
                 <MenuItem Header="Salir" Click="SalirPrograma"/>
+                <MenuItem Header="Dificultad">
+                    <MenuItem Name="rbtFacil" Header="Facil" IsCheckable="True" Click="RadioButtonDificultades"/>
+                    <MenuItem Name="rbNormal" Header="Normal" IsCheckable="True" Click="RadioButtonDificultades"/>
+                    <MenuItem Name="rbDificil" Header="Dificil" IsCheckable="True" Click="RadioButtonDificultades"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
         <Label Content="Botones sin minas:" HorizontalAlignment="Left" Margin="78,26,0,0" VerticalAlignment="Top"/>

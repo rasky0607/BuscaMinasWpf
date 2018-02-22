@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 
 namespace BuscaMinas
 {
+    //10% facil 60 botones
+    //25% normal 40 botones
+    //50% dificil 25 botones
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
@@ -73,6 +76,10 @@ namespace BuscaMinas
             Button mibutton;
             SolidColorBrush micolor;
             Random rnd = new Random();
+            //Limpia las lista para los contadores de minas
+            botonesConMinas.Clear();
+            botonesSinMinas.Clear();
+            //-----------------------------//
             for (int i = 0; i < nFilas; i++)
             {
                 for (int j = 0; j < nColum; j++)
@@ -83,8 +90,8 @@ namespace BuscaMinas
                     //añade un valor aleatorio entre 0 y 1 al tag del boton definiendo si hay mina o no(1-> no mina 0->si mina)
                     mibutton.Tag = rnd.Next(0, 2);
                     mibutton.Name = "boton" + contadorNombreBotones;
-                    
-                    if (mibutton.Tag is 0)
+                    int variable = int.Parse(mibutton.Tag.ToString());
+                    if ( variable == 0)
                         botonesConMinas.Add(mibutton);//Botones que si contienen minas
                     else
                         botonesSinMinas.Add(mibutton);//Botones que no contienen minas
@@ -100,8 +107,8 @@ namespace BuscaMinas
                     contadorNombreBotones++;
                 }
             }
-            contadorBotonesSinMinas = botonesSinMinas.Count-1;
-            contadorBotonesConMinas = botonesConMinas.Count - 1;
+            contadorBotonesSinMinas = botonesSinMinas.Count;
+            contadorBotonesConMinas = botonesConMinas.Count;
             lbNumerodeBotonesSinMinas.Content = contadorBotonesSinMinas;
             lbNumerodeBotonesConMinas.Content = contadorBotonesConMinas;
             
@@ -327,6 +334,7 @@ namespace BuscaMinas
                 switch (respuesta)
                 {
                     case MessageBoxResult.Yes:
+                        
                         CreaGrid();                      
                         LLenaBotones();
                         break;
@@ -342,7 +350,7 @@ namespace BuscaMinas
                 MessageBoxResult respuesta = MessageBox.Show("¿Quieres intentarlo de nuevo?", "Oh, losiento has perdido!", MessageBoxButton.YesNo);
                 switch (respuesta)
                 {
-                    case MessageBoxResult.Yes:
+                    case MessageBoxResult.Yes:                      
                         CreaGrid();                      
                         LLenaBotones();
                         break;
@@ -359,6 +367,28 @@ namespace BuscaMinas
         {
             Close();
         }
+
+        private void RadioButtonDificultades(object sender, RoutedEventArgs e)
+        {                 
+            MenuItem mibotonescogido =(MenuItem) e.OriginalSource;
+            switch (mibotonescogido.Name.ToString())
+            { 
+                case "rbtFacil":
+                    MessageBox.Show("PEPE!");
+                    break;
+                case "rbNormal":
+                    MessageBox.Show("PACO!");
+                    break;
+                case "rbDificil":
+                    MessageBox.Show("PINILLO!");
+                    break;
+
+            }
+        }
+
+        
+
+       
 
 
     }
