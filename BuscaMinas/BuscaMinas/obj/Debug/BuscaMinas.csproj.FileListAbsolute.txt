@@ -102,3 +102,5 @@ E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.CoreCompileInputs.cache
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.exe
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.pdb
+E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\Inicio.g.cs
+E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\Inicio.baml

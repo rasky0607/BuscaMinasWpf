@@ -14,7 +14,7 @@
             <MenuItem Header="Archivo">
                 <MenuItem Header="Salir" Click="SalirPrograma"/>
                 <MenuItem Header="Dificultad">
-                    <MenuItem Name="rbtFacil" Header="Facil" IsCheckable="True" Click="RadioButtonDificultades"/>
+                    <MenuItem Name="rbtFacil" Header="Facil" IsCheckable="True" Click="RadioButtonDificultades" IsChecked="True"/>
                     <MenuItem Name="rbNormal" Header="Normal" IsCheckable="True" Click="RadioButtonDificultades"/>
                     <MenuItem Name="rbDificil" Header="Dificil" IsCheckable="True" Click="RadioButtonDificultades"/>
                 </MenuItem>

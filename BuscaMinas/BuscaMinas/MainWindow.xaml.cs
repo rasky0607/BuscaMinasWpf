@@ -23,22 +23,26 @@ namespace BuscaMinas
     /// </summary>
     public partial class MainWindow : Window
     {     
-        const int NUMERODEFILASYCOLUMNAS = 5;
+       public int NUMERODEFILASYCOLUMNAS = 5;
         Button[,] misbotones;//20 filas 20 columnas por cada fila y columna un boton       
         int[] posicionButtonActual = new int[2];//Poscion del botton actualmente pulsado para comprobar si alrededor ahi minas.
         List<Button> botonesSinMinas = new List<Button>();
         List<Button> botonesConMinas = new List<Button>();
         List<Button> botonesPulsados = new List<Button>();
         int contadorBotonesSinMinas = 0;
-        int contadorBotonesConMinas = 0;     
+        int contadorBotonesConMinas = 0;
+        public int numeroDeminasMaximas = 0;
         public MainWindow()
         {
-            InitializeComponent();
-           
-            CreaGrid();          
-            LLenaBotones();
-          
-           
+            InitializeComponent();           
+            //CreaGrid();          
+            //LLenaBotones();
+            /*
+             Lista las dificultades:
+             Ahora queda crear otra ventana que a la hora de cargar la applicacion pregunte por el nivel de dificultad y de a un boton de iniciar, tras la cual,
+             recargara o rellamara alos metodos CreaGrid() y LLenaBotones()rf
+               */
+
         }
 
         public void CreaGrid()
@@ -67,8 +71,9 @@ namespace BuscaMinas
         /// que es la posicion de una fila y una columna
         /// </LLenaBotones>
         /// <param name="array"></param>
-        private void LLenaBotones()
-        {
+        public void LLenaBotones()
+        {           
+            int contadorMinasCreadas = 0;
             misbotones = new Button[NUMERODEFILASYCOLUMNAS, NUMERODEFILASYCOLUMNAS];//20 filas 20 columnas por cada fila y columna un boton   
             int contadorNombreBotones =1;
             int nColum = gridTablero.ColumnDefinitions.Count;
@@ -89,6 +94,16 @@ namespace BuscaMinas
                     mibutton.Background = micolor;
                     //añade un valor aleatorio entre 0 y 1 al tag del boton definiendo si hay mina o no(1-> no mina 0->si mina)
                     mibutton.Tag = rnd.Next(0, 2);
+                    if (contadorMinasCreadas <= numeroDeminasMaximas)
+                    {
+                        if (mibutton.Tag is 0)
+                        {
+                            contadorMinasCreadas++;
+                        }
+                    }
+                    else
+                        mibutton.Tag = 1;
+
                     mibutton.Name = "boton" + contadorNombreBotones;
                     int variable = int.Parse(mibutton.Tag.ToString());
                     if ( variable == 0)
@@ -369,27 +384,36 @@ namespace BuscaMinas
         }
 
         private void RadioButtonDificultades(object sender, RoutedEventArgs e)
-        {                 
+        {
+            const int PORCENTAJEDEDIFICULTADBAJA = 10;
+            const int PORCENTAJEDEDIFICULTADMEDIA = 25;
+            const int PORCENTAJEDEDIFICULTADALTA = 50;            
+            int numeroDeBotonesPosibles = 0;
+            numeroDeBotonesPosibles = NUMERODEFILASYCOLUMNAS * NUMERODEFILASYCOLUMNAS;
             MenuItem mibotonescogido =(MenuItem) e.OriginalSource;
             switch (mibotonescogido.Name.ToString())
             { 
                 case "rbtFacil":
-                    MessageBox.Show("PEPE!");
+                    //Cantidad de botones que pueden haber , de ahi sacamos el 10% el cual hara de tope para  la cantidad de minas que puede haber.                
+                    numeroDeminasMaximas = (numeroDeBotonesPosibles * PORCENTAJEDEDIFICULTADBAJA) / 100;
+                    CreaGrid();
+                    LLenaBotones();
                     break;
                 case "rbNormal":
-                    MessageBox.Show("PACO!");
+                    numeroDeminasMaximas = (numeroDeBotonesPosibles * PORCENTAJEDEDIFICULTADMEDIA) / 100;
+                    CreaGrid();
+                    LLenaBotones();
                     break;
                 case "rbDificil":
-                    MessageBox.Show("PINILLO!");
-                    break;
-
+                    numeroDeminasMaximas = (numeroDeBotonesPosibles * PORCENTAJEDEDIFICULTADALTA) / 100;
+                    CreaGrid();
+                    LLenaBotones();
+                    break;                
             }
+
+          
         }
 
-        
-
        
-
-
     }
 }

@@ -1,0 +1,16 @@
+﻿<Window x:Class="BuscaMinas.Inicio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BuscaMinas"
+        mc:Ignorable="d"
+        Title="Buscaminas" Height="124.452" Width="334.615">
+    <Grid>
+        <RadioButton Name="rbFacil" Content="Fácil" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top" Checked="DificultadesTarget"/>
+        <RadioButton Name="rbMedio" Content="Medio" HorizontalAlignment="Left" Margin="123,62,0,0" VerticalAlignment="Top"  Checked="DificultadesTarget"/>
+        <RadioButton Name="rbDificil" Content="Difícil" HorizontalAlignment="Left" Margin="223,62,0,0" VerticalAlignment="Top" Checked="DificultadesTarget"/>
+        <Label Content="Escoge un nivel de dificultad:" HorizontalAlignment="Left" Margin="73,20,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
