@@ -21,7 +21,7 @@ namespace BuscaMinas
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VentanaDeJuego : Window
     {     
        public int NUMERODEFILASYCOLUMNAS = 5;
         Button[,] misbotones;//20 filas 20 columnas por cada fila y columna un boton       
@@ -32,17 +32,10 @@ namespace BuscaMinas
         int contadorBotonesSinMinas = 0;
         int contadorBotonesConMinas = 0;
         public int numeroDeminasMaximas = 0;
-        public MainWindow()
+        public VentanaDeJuego()
         {
             InitializeComponent();           
-            //CreaGrid();          
-            //LLenaBotones();
-            /*
-             Lista las dificultades:
-             Ahora queda crear otra ventana que a la hora de cargar la applicacion pregunte por el nivel de dificultad y de a un boton de iniciar, tras la cual,
-             recargara o rellamara alos metodos CreaGrid() y LLenaBotones()rf
-               */
-
+           
         }
 
         public void CreaGrid()
@@ -380,7 +373,7 @@ namespace BuscaMinas
 
         private void SalirPrograma(object sender, RoutedEventArgs e)
         {
-            Close();
+            Close();         
         }
 
         private void ButtonDificultades(object sender, RoutedEventArgs e)

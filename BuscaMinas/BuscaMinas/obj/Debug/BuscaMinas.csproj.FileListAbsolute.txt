@@ -91,11 +91,9 @@ E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.exe
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.pdb
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csprojResolveAssemblyReference.cache
-E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\MainWindow.g.cs
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\App.g.cs
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas_MarkupCompile.cache
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas_MarkupCompile.lref
-E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\MainWindow.baml
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.g.resources
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.Properties.Resources.resources
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.GenerateResource.Cache
@@ -104,3 +102,5 @@ E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.pdb
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\Inicio.g.cs
 E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\Inicio.baml
+E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\VentanaDeJuego.g.cs
+E:\Repositorios en Git\BuscaMinasWpf\BuscaMinas\BuscaMinas\obj\Debug\VentanaDeJuego.baml

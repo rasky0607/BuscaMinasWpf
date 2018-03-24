@@ -32,7 +32,7 @@ namespace BuscaMinas
             const int PORCENTAJEDEDIFICULTADMEDIA = 25;
             const int PORCENTAJEDEDIFICULTADALTA = 50;
             int numeroDeBotonesPosibles = 0;
-            MainWindow miVentanaDeJuego = new MainWindow();
+            VentanaDeJuego miVentanaDeJuego = new VentanaDeJuego();
             Inicio ventanaDeInicioDeJuego = new Inicio();
             
             numeroDeBotonesPosibles = miVentanaDeJuego.NUMERODEFILASYCOLUMNAS * miVentanaDeJuego.NUMERODEFILASYCOLUMNAS;
@@ -46,6 +46,7 @@ namespace BuscaMinas
                     miVentanaDeJuego.numeroDeminasMaximas = (numeroDeBotonesPosibles * PORCENTAJEDEDIFICULTADBAJA) / 100;
                     miVentanaDeJuego.CreaGrid();
                     miVentanaDeJuego.LLenaBotones();
+                    this.Close();//Cierra la ventana actual de Inicio una vez selecionada la dificultad
                     miVentanaDeJuego.ShowDialog();
                   
                     break;
@@ -53,6 +54,7 @@ namespace BuscaMinas
                     miVentanaDeJuego.numeroDeminasMaximas = (numeroDeBotonesPosibles * PORCENTAJEDEDIFICULTADMEDIA) / 100;
                     miVentanaDeJuego.CreaGrid();
                     miVentanaDeJuego.LLenaBotones();
+                    this.Close();
                     miVentanaDeJuego.ShowDialog();
                   
                     break;
@@ -60,19 +62,16 @@ namespace BuscaMinas
                     miVentanaDeJuego.numeroDeminasMaximas = (numeroDeBotonesPosibles * PORCENTAJEDEDIFICULTADALTA) / 100;
                     miVentanaDeJuego.CreaGrid();
                     miVentanaDeJuego.LLenaBotones();
+                    this.Close();
                     miVentanaDeJuego.ShowDialog();
                   
                     break;
                                     
             }
-           
-
-
-        }
-
-        private void rbFacil_Checked(object sender, RoutedEventArgs e)
-        {
+          
 
         }
+
+       
     }
 }
