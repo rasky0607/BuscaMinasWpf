@@ -383,7 +383,7 @@ namespace BuscaMinas
             Close();
         }
 
-        private void RadioButtonDificultades(object sender, RoutedEventArgs e)
+        private void ButtonDificultades(object sender, RoutedEventArgs e)
         {
             const int PORCENTAJEDEDIFICULTADBAJA = 10;
             const int PORCENTAJEDEDIFICULTADMEDIA = 25;
