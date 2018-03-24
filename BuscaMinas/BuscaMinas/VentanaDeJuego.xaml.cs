@@ -288,14 +288,14 @@ namespace BuscaMinas
             SolidColorBrush micolor2 = new SolidColorBrush(Colors.Green);       
             if ((int)misbotones[posX, posY].Tag == 0)
             {
-                MessageBox.Show("hay mina!");            
+                //MessageBox.Show("hay mina!");            
                 misbotones[posX, posY].Background = micolor;
                 lbNumerodeBotonesConMinas.Content = --contadorBotonesConMinas;
                 return true;
             }
             else
             {
-                MessageBox.Show("NO hay mina");              
+                //MessageBox.Show("NO hay mina");              
                 misbotones[posX, posY].Background = micolor2;             
                 lbNumerodeBotonesSinMinas.Content = --contadorBotonesSinMinas;//Revisar cuando llega a 0 minas " el cual se pone en negativo" 
                 return false;
