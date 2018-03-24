@@ -407,6 +407,11 @@ namespace BuscaMinas
           
         }
 
-       
+        private void btnMenuInstrucciones_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(" -En primer lugar  las casillas que contienen minas estaran marcadas de color rojo.\n -Las casillas en verde no contendran minas.\n -El numero que aparecera dentro de cada casilla indicara el numero de casillas con minas que hay en los alrededores de está.\n -Objetivo: intenta encontrar todas las casillas libres de minas antes de encontrar demasiadas.", "Instrucciones");
+        }
+
+
     }
 }

@@ -13,7 +13,8 @@
         <Menu HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="509">
             <MenuItem Header="Archivo">
                 <MenuItem Header="Salir" Click="SalirPrograma"/>
-                <MenuItem Header="Reinicia">
+                <MenuItem Name="btnMenuInstrucciones" Header="¿Como jugar?" ToolTip="Instruciones de juego." Click="btnMenuInstrucciones_Click"/>
+                <MenuItem Header="Reinicia" ToolTip="Reinicia el juego a un nivel de dificultad selecionado.">
                     <MenuItem Name="rbtFacil" Header="Facil"  Click="ButtonDificultades"/>
                     <MenuItem Name="rbNormal" Header="Normal" Click="ButtonDificultades"/>
                     <MenuItem Name="rbDificil" Header="Dificil" Click="ButtonDificultades"/>
